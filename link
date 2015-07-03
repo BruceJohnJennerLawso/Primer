@@ -1,0 +1,5 @@
+#!/bin/bash
+
+g++ prime.o -o primer
+
+exit 0

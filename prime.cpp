@@ -28,7 +28,7 @@ int Find_prime_of(long double value);
 int main(int argc, char* argv[])
 {	if(argc == 2)
 	{	std::string input = argv[1];
-		number = stold(input);
+		number = std::stold(input);
 		if(Is_integer(number))
 		{	if(number > 1)
 			{

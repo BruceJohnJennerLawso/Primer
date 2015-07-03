@@ -1,0 +1,5 @@
+#!/bin/bash
+
+g++ prime.cpp -c -std=c++0x
+
+exit 0
