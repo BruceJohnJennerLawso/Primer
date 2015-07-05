@@ -27,7 +27,7 @@ void print(std::string text, number value);
 
 void Find_primes(long double value);
 bool Is_integer(number value);
-bool Is_prime(long double value);
+bool Is_prime(number value);
 integer Find_prime_of(long double value);
 
 
@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 			// you dont need a program to find prime factors of 1 :p
 		}
 		else
-		{
+		{	print("Input is not an integer number, please try an integer");
 			return -3;
 		}
 	}
@@ -133,12 +133,12 @@ bool Is_integer(number value)
 	// be if we did a nasty cast to int.
 }
 
-bool Is_prime(long double value)
+bool Is_prime(number value)
 {	if(Is_integer(value))
-	{	for(int cy = 2; cy != (int)value; ++cy)
+	{	for(integer cy = 2; cy != (integer)value; ++cy)
 		{	// we start at two, since one will obviously work on everything
-			long double factor = cy;
-			long double compare = value/factor;
+			number factor = cy;
+			number compare = value/factor;
 			// we divide our original value by the current cy, and check if the
 			// result is an integer
 			if(Is_integer(compare))
