@@ -26,9 +26,9 @@ void print(std::string text, integer value);
 void print(std::string text, number value);
 
 void Find_primes(long double value);
+integer Find_prime_of(number value);
 bool Is_integer(number value);
 bool Is_prime(number value);
-integer Find_prime_of(long double value);
 
 
 int main(int argc, char* argv[])
@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 			// you dont need a program to find prime factors of 1 :p
 		}
 		else
-		{	print("Input is not an integer number, please try an integer");
+		{	print("Input is not an integer number, please try an integer value");
 			return -3;
 		}
 	}
@@ -65,34 +65,34 @@ void print(std::string output)
 
 void print(std::string text, integer value)
 {	
-	std::cout << output << value << std::endl;
+	std::cout << text << value << std::endl;
 }
 
 
 void print(std::string text, number value)
 {
-	std::cout << output << value << std::endl;
+	std::cout << text << value << std::endl;
 }
 
 
 
-void Find_primes(long double value)
-{	std::cout << (int)value << " = "; 
+void Find_primes(number value)
+{	std::cout << (integer)value << " = "; 
 	if(Is_prime(value) == true)
-	{	std::cout << "(" << (int)value << ") " << "(" << (int)value << " is a prime)" << std::endl;
+	{	std::cout << "(" << (integer)value << ") " << "(" << (integer)value << " is a prime)" << std::endl;
 	}
 	else
-	{	long double prime = Find_prime_of(value);
-		std::cout << "(" << (int)prime << ")";
+	{	number prime = Find_prime_of(value);
+		std::cout << "(" << (integer)prime << ")";
 		value /= prime;
 		while(true)
 		{	if(!Is_prime(value))
 			{	prime = Find_prime_of(value);
-				std::cout << " * (" << (int)prime << ")";
+				std::cout << " * (" << (integer)prime << ")";
 				value /= prime;
 			}
 			else
-			{	std::cout << " * (" << (int)value << ")" << std::endl;
+			{	std::cout << " * (" << (integer)value << ")" << std::endl;
 				// value becomes our last prime, and we move on
 				break;
 			}
@@ -100,18 +100,18 @@ void Find_primes(long double value)
 	}
 }
 
-integer Find_prime_of(long double value)
+integer Find_prime_of(number value)
 {	if(Is_prime(value) == true)
-	{	return (int)value;
+	{	return (number)value;
 	}
 	else
-	{	for(int cy = 2; cy != value; ++cy)
-		{	long double factor = cy;
-			long double compare = value/factor;
+	{	for(integer cy = 2; cy != value; ++cy)
+		{	number factor = cy;
+			number compare = value/factor;
 			if(Is_integer(compare))
 			{	// hurrr
 				if(Is_prime(compare))
-				{	return (int)compare;
+				{	return (integer)compare;
 					// we look at the remainder
 				}	
 			}
