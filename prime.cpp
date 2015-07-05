@@ -17,34 +17,64 @@
 
 // might be interesting to try this in FORTRAN and compare results
 
-long double number;
+typedef long long int integer;
+typedef long double number;
+
+
+void print(std::string output);
+void print(std::string text, integer value);
+void print(std::string text, number value);
 
 void Find_primes(long double value);
-bool Is_integer(long double value);
+bool Is_integer(number value);
 bool Is_prime(long double value);
-int Find_prime_of(long double value);
+integer Find_prime_of(long double value);
 
 
 int main(int argc, char* argv[])
-{	if(argc == 2)
+{	
+	if(argc == 2)
 	{	std::string input = argv[1];
-		number = std::stold(input);
-		if(Is_integer(number))
-		{	if(number > 1)
+		
+		number value = std::stold(input);
+		// this needs a try catch block to handle inputs that are not numbers
+		if(Is_integer(value))
+		{	if(value > 1)
 			{
 				//std::cout << "Is prime " << Is_prime(number);
-				Find_primes(number);
+				Find_primes(value);
 			}	// otherwise we dont care
 			// you dont need a program to find prime factors of 1 :p
 		}
 		else
-		{	return -3;
+		{
+			return -3;
 		}
 	}
 	else
-	{	return -2;
+	{	print("Not enough arguments");
+		print("Please try primer <number>");
+		return -2;
 	}
 }
+
+void print(std::string output)
+{	
+	std::cout << output << std::endl;
+}
+
+void print(std::string text, integer value)
+{	
+	std::cout << output << value << std::endl;
+}
+
+
+void print(std::string text, number value)
+{
+	std::cout << output << value << std::endl;
+}
+
+
 
 void Find_primes(long double value)
 {	std::cout << (int)value << " = "; 
@@ -70,7 +100,7 @@ void Find_primes(long double value)
 	}
 }
 
-int Find_prime_of(long double value)
+integer Find_prime_of(long double value)
 {	if(Is_prime(value) == true)
 	{	return (int)value;
 	}
@@ -91,8 +121,8 @@ int Find_prime_of(long double value)
 
 
 
-bool Is_integer(long double value)
-{	long double comparison = (int)value;
+bool Is_integer(number value)
+{	number comparison = (integer)value;
 	if(value == comparison)
 	{	return true;
 	}
