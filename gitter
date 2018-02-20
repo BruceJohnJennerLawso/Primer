@@ -1,5 +1,11 @@
 #!/bin/bash
 
-geany prime.cpp compile drop link gitter &
+if [ $# -eq 0 ]; then
+	baseFolder="."
+else
+	baseFolder="$1"
+fi
+
+geany "$baseFolder/prime.cpp" "$baseFolder/compile" "$baseFolder/link" "$baseFolder/drop" "$baseFolder/gitter" &
 
 exit 0
