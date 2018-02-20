@@ -1,0 +1,5 @@
+#!/bin/bash
+
+geany prime.cpp compile drop link gitter &
+
+exit 0
